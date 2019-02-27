@@ -33,11 +33,11 @@ RUN apt-get update && \
     cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++11" .. && \
     make -j$(nproc) && \
     mkdir -p /usr/local/bin && \
-    cp src/TurtleCoind /usr/local/bin/TurtleCoind && \
+    cp src/MeteorCoind /usr/local/bin/MeteorCoind && \
     cp src/walletd /usr/local/bin/walletd && \
     cp src/zedwallet /usr/local/bin/zedwallet && \
     cp src/miner /usr/local/bin/miner && \
-    strip /usr/local/bin/TurtleCoind && \
+    strip /usr/local/bin/MeteorCoind && \
     strip /usr/local/bin/walletd && \
     strip /usr/local/bin/zedwallet && \
     strip /usr/local/bin/miner && \
@@ -65,7 +65,7 @@ RUN useradd -r -s /usr/sbin/nologin -m -d /var/lib/turtlecoind turtlecoind && \
     echo "fdmove -c 2 1" >> /etc/services.d/turtlecoind/run && \
     echo "cd /var/lib/turtlecoind" >> /etc/services.d/turtlecoind/run && \
     echo "export HOME /var/lib/turtlecoind" >> /etc/services.d/turtlecoind/run && \
-    echo "s6-setuidgid turtlecoind /usr/local/bin/TurtleCoind" >> /etc/services.d/turtlecoind/run && \
+    echo "s6-setuidgid turtlecoind /usr/local/bin/MeteorCoind" >> /etc/services.d/turtlecoind/run && \
     chmod +x /etc/services.d/turtlecoind/run && \
     chown nobody:nogroup /var/log/turtlecoind && \
     echo "#!/usr/bin/execlineb" > /etc/services.d/turtlecoind/log/run && \

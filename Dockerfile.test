@@ -49,18 +49,18 @@ RUN apt-get update && \
     sed -i -e 's/"145.239.88.119:11999", \/\/cision/"10.0.76.11:11897",/g' src/CryptoNoteConfig.h && \
     sed -i -e 's/"142.44.242.106:11897", \/\/tom/"10.0.76.12:11897",/g' src/CryptoNoteConfig.h && \
     sed -i -e 's/"165.227.252.132:11897" \/\/iburnmycd/"10.0.76.13:11897",/g' src/CryptoNoteConfig.h && \
-    sed -i -e 's/TurtleCoin/TortleCoin/' src/CryptoNoteConfig.h && \
+    sed -i -e 's/MeteorCoin/TortleCoin/' src/CryptoNoteConfig.h && \
     sed -i -e 's/0xcf, 0x52, 0x57/0x52, 0xcf, 0x57/' src/P2p/P2pNetworks.h && \
     mkdir build && \
     cd build && \
     cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++11" .. && \
     make -j$(nproc) && \
     mkdir -p /usr/local/bin && \
-    cp src/TurtleCoind /usr/local/bin/TurtleCoind && \
+    cp src/MeteorCoind /usr/local/bin/MeteorCoind && \
     cp src/walletd /usr/local/bin/walletd && \
     cp src/zedwallet /usr/local/bin/zedwallet && \
     cp src/miner /usr/local/bin/miner && \
-    strip /usr/local/bin/TurtleCoind && \
+    strip /usr/local/bin/MeteorCoind && \
     strip /usr/local/bin/walletd && \
     strip /usr/local/bin/zedwallet && \
     strip /usr/local/bin/miner && \
@@ -88,7 +88,7 @@ RUN useradd -r -s /usr/sbin/nologin -m -d /var/lib/turtlecoind turtlecoind && \
     echo "fdmove -c 2 1" >> /etc/services.d/turtlecoind/run && \
     echo "cd /var/lib/turtlecoind" >> /etc/services.d/turtlecoind/run && \
     echo "export HOME /var/lib/turtlecoind" >> /etc/services.d/turtlecoind/run && \
-    echo "s6-setuidgid turtlecoind /usr/local/bin/TurtleCoind --log-level=2" >> /etc/services.d/turtlecoind/run && \
+    echo "s6-setuidgid turtlecoind /usr/local/bin/MeteorCoind --log-level=2" >> /etc/services.d/turtlecoind/run && \
     chmod +x /etc/services.d/turtlecoind/run && \
     chmod +x /tmp/wait-for-it.sh && \
     chown nobody:nogroup /var/log/turtlecoind && \
