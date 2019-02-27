@@ -100,7 +100,7 @@ Binaries for Testing:
   - [ ] Linux
   - [ ] MacOS
 
-### Turtle-Service Tests
+### Meteor-Service Tests
 - Connect to local daemon
   - [ ] Windows
   - [ ] Linux

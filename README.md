@@ -1,12 +1,12 @@
 #### Master Build Status
-[![Build Status](https://travis-ci.org/turtlecoin/turtlecoin.svg?branch=master)](https://travis-ci.org/turtlecoin/turtlecoin) [![Build status](https://ci.appveyor.com/api/projects/status/github/turtlecoin/turtlecoin?branch=master&svg=true)](https://ci.appveyor.com/project/RocksteadyTC/turtlecoin)
+[![Build Status](https://travis-ci.org/meteorcoin/meteorcoin.svg?branch=master)](https://travis-ci.org/meteorcoin/meteorcoin) [![Build status](https://ci.appveyor.com/api/projects/status/github/meteorcoin/meteorcoin?branch=master&svg=true)](https://ci.appveyor.com/project/RocksteadyTC/meteorcoin)
 
 #### Development Build Status
-[![Build Status](https://travis-ci.org/turtlecoin/turtlecoin.svg?branch=development)](https://travis-ci.org/turtlecoin/turtlecoin) [![Build status](https://ci.appveyor.com/api/projects/status/github/turtlecoin/turtlecoin?branch=development&svg=true)](https://ci.appveyor.com/project/RocksteadyTC/turtlecoin)
+[![Build Status](https://travis-ci.org/meteorcoin/meteorcoin.svg?branch=development)](https://travis-ci.org/meteorcoin/meteorcoin) [![Build status](https://ci.appveyor.com/api/projects/status/github/meteorcoin/meteorcoin?branch=development&svg=true)](https://ci.appveyor.com/project/RocksteadyTC/meteorcoin)
 
 ### Installing
 
-We offer binary images of the latest releases here: http://latest.turtlecoin.lol
+We offer binary images of the latest releases here: http://latest.meteorcoin.lol
 
 If you would like to compile yourself, read on.
 
@@ -111,7 +111,7 @@ The binaries will be in the `src` folder when you are complete.
 - `export CC=gcc-8`
 - `export CXX=g++-8`
 - `git clone -b master --single-branch https://github.com/meteor-network/meteorcoin`
-- `cd turtlecoin`
+- `cd meteorcoin`
 - `mkdir build`
 - `cd build`
 - `cmake ..`
@@ -134,8 +134,8 @@ The binaries will be in the `src` folder when you are complete.
 - `brew install --force cmake boost llvm`
 - `export CC=/usr/local/opt/llvm/bin/clang`
 - `export CXX=/usr/local/opt/llvm/bin/clang++`
-- `git clone -b master --single-branch https://github.com/turtlecoin/turtlecoin`
-- `cd turtlecoin`
+- `git clone -b master --single-branch https://github.com/meteor-network/meteorcoin`
+- `cd meteorcoin`
 - `mkdir build`
 - `cd build`
 - `cmake ..`
@@ -158,7 +158,7 @@ The binaries will be in the `src` folder when you are complete.
 ##### Building
 
 - From the start menu, open 'x64 Native Tools Command Prompt for vs2017'.
-- `cd <your_turtlecoin_directory>`
+- `cd <your_meteorcoin_directory>`
 - `mkdir build`
 - `cd build`
 - `set PATH="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin";%PATH%`
@@ -187,8 +187,8 @@ Once you have a 64 bit image installed, setup proceeds the same as any Linux dis
 
 ##### Building
 
-- `git clone -b master --single-branch https://github.com/turtlecoin/turtlecoin`
-- `cd turtlecoin`
+- `git clone -b master --single-branch https://github.com/meteor-network/meteorcoin`
+- `cd meteorcoin`
 - `mkdir build`
 - `cd build`
 - `cmake ..`
@@ -204,7 +204,7 @@ Cryptonote Developers, Bytecoin Developers, Monero Developers, Forknote Project,
 
 ### Copypasta for license when editing files
 
-Hi MeteorCoin contributor, thanks for forking and sending back Pull Requests. Extensive docs about contributing are in the works or elsewhere. For now this is the bit we need to get into all the files we touch. Please add it to the top of the files, see [src/CryptoNoteConfig.h](https://github.com/turtlecoin/turtlecoin/commit/28cfef2575f2d767f6e512f2a4017adbf44e610e) for an example.
+Hi MeteorCoin contributor, thanks for forking and sending back Pull Requests. Extensive docs about contributing are in the works or elsewhere. For now this is the bit we need to get into all the files we touch. Please add it to the top of the files, see [src/CryptoNoteConfig.h](https://github.com/meteor-network/meteorcoin/commit/28cfef2575f2d767f6e512f2a4017adbf44e610e) for an example.
 
 ```
 // Copyright (c) 2012-2017, The CryptoNote developers, The Bytecoin developers

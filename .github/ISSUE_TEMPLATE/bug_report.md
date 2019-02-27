@@ -25,7 +25,7 @@ about: Create a report to help us improve
 Please insert your build commands here. Example:
 
 mkdir build && cd build
-cmake .. -DBOOST_ROOT=/home/turtlecoin/boost_1_59_0
+cmake .. -DBOOST_ROOT=/home/meteorcoin/boost_1_59_0
 make -j4
 ```
 
@@ -36,7 +36,7 @@ Please insert your default verbosity CMake output here
 
 ### Issue Report
 
-**Binary Reported:** <!-- does this issue affect zedwallet, MeteorCoind, turtle-service, miner? -->
+**Binary Reported:** <!-- does this issue affect zedwallet, MeteorCoind, meteor-service, miner? -->
 
 #### Expected Behavior
 

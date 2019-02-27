@@ -1,4 +1,5 @@
 // Copyright (c) 2018, The TurtleCoin Developers
+// Copyright (c) 2019, The MeteorCoin Developers
 // 
 // Please see the included LICENSE file for more information.
 
@@ -84,7 +85,7 @@ void balance(const std::shared_ptr<WalletBackend> walletBackend)
 
     /* We can make a better approximation of the view wallet balance if we
        ignore fusion transactions.
-       See https://github.com/turtlecoin/turtlecoin/issues/531 */
+       See https://github.com/meteor-network/meteorcoin/issues/531 */
     if (walletBackend->isViewWallet())
     {
         unlockedBalance = 0;

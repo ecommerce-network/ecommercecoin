@@ -1,7 +1,7 @@
 # daemon runs in the background
-# run something like tail /var/log/turtlecoind/current to see the status
+# run something like tail /var/log/meteorcoind/current to see the status
 # be sure to run with volumes, ie:
-# docker run -v $(pwd)/turtlecoind:/var/lib/turtlecoind -v $(pwd)/wallet:/home/turtlecoin --rm -ti turtlecoin:0.2.2
+# docker run -v $(pwd)/meteorcoind:/var/lib/meteorcoind -v $(pwd)/wallet:/home/meteorcoin --rm -ti meteorcoin:0.2.2
 ARG base_image_version=0.10.0
 FROM phusion/baseimage:$base_image_version
 
@@ -11,8 +11,8 @@ RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
 ADD https://github.com/just-containers/socklog-overlay/releases/download/v2.1.0-0/socklog-overlay-amd64.tar.gz /tmp/
 RUN tar xzf /tmp/socklog-overlay-amd64.tar.gz -C /
 
-ARG TURTLECOIN_BRANCH=master
-ENV TURTLECOIN_BRANCH=${TURTLECOIN_BRANCH}
+ARG METEORCOIN_BRANCH=master
+ENV METEORCOIN_BRANCH=${METEORCOIN_BRANCH}
 
 # install build dependencies
 # checkout the latest tag
@@ -25,9 +25,9 @@ RUN apt-get update && \
       g++-4.9 \
       git cmake \
       libboost1.58-all-dev && \
-    git clone https://github.com/turtlecoin/turtlecoin.git /src/turtlecoin && \
-    cd /src/turtlecoin && \
-    git checkout $TURTLECOIN_BRANCH && \
+    git clone https://github.com/meteor-network/meteorcoin.git /src/meteorcoin && \
+    cd /src/meteorcoin && \
+    git checkout $METEORCOIN_BRANCH && \
     mkdir build && \
     cd build && \
     cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++11" .. && \
@@ -42,7 +42,7 @@ RUN apt-get update && \
     strip /usr/local/bin/zedwallet && \
     strip /usr/local/bin/miner && \
     cd / && \
-    rm -rf /src/turtlecoin && \
+    rm -rf /src/meteorcoin && \
     apt-get remove -y build-essential python-dev gcc-4.9 g++-4.9 git cmake libboost1.58-all-dev && \
     apt-get autoremove -y && \
     apt-get install -y  \
@@ -56,27 +56,27 @@ RUN apt-get update && \
       libboost-program-options1.58.0 \
       libicu55
 
-# setup the turtlecoind service
-RUN useradd -r -s /usr/sbin/nologin -m -d /var/lib/turtlecoind turtlecoind && \
-    useradd -s /bin/bash -m -d /home/turtlecoin turtlecoin && \
-    mkdir -p /etc/services.d/turtlecoind/log && \
-    mkdir -p /var/log/turtlecoind && \
-    echo "#!/usr/bin/execlineb" > /etc/services.d/turtlecoind/run && \
-    echo "fdmove -c 2 1" >> /etc/services.d/turtlecoind/run && \
-    echo "cd /var/lib/turtlecoind" >> /etc/services.d/turtlecoind/run && \
-    echo "export HOME /var/lib/turtlecoind" >> /etc/services.d/turtlecoind/run && \
-    echo "s6-setuidgid turtlecoind /usr/local/bin/MeteorCoind" >> /etc/services.d/turtlecoind/run && \
-    chmod +x /etc/services.d/turtlecoind/run && \
-    chown nobody:nogroup /var/log/turtlecoind && \
-    echo "#!/usr/bin/execlineb" > /etc/services.d/turtlecoind/log/run && \
-    echo "s6-setuidgid nobody" >> /etc/services.d/turtlecoind/log/run && \
-    echo "s6-log -bp -- n20 s1000000 /var/log/turtlecoind" >> /etc/services.d/turtlecoind/log/run && \
-    chmod +x /etc/services.d/turtlecoind/log/run && \
-    echo "/var/lib/turtlecoind true turtlecoind 0644 0755" > /etc/fix-attrs.d/turtlecoind-home && \
-    echo "/home/turtlecoin true turtlecoin 0644 0755" > /etc/fix-attrs.d/turtlecoin-home && \
-    echo "/var/log/turtlecoind true nobody 0644 0755" > /etc/fix-attrs.d/turtlecoind-logs
+# setup the meteorcoind service
+RUN useradd -r -s /usr/sbin/nologin -m -d /var/lib/meteorcoind meteorcoind && \
+    useradd -s /bin/bash -m -d /home/meteorcoin meteorcoin && \
+    mkdir -p /etc/services.d/meteorcoind/log && \
+    mkdir -p /var/log/meteorcoind && \
+    echo "#!/usr/bin/execlineb" > /etc/services.d/meteorcoind/run && \
+    echo "fdmove -c 2 1" >> /etc/services.d/meteorcoind/run && \
+    echo "cd /var/lib/meteorcoind" >> /etc/services.d/meteorcoind/run && \
+    echo "export HOME /var/lib/meteorcoind" >> /etc/services.d/meteorcoind/run && \
+    echo "s6-setuidgid meteorcoind /usr/local/bin/MeteorCoind" >> /etc/services.d/meteorcoind/run && \
+    chmod +x /etc/services.d/meteorcoind/run && \
+    chown nobody:nogroup /var/log/meteorcoind && \
+    echo "#!/usr/bin/execlineb" > /etc/services.d/meteorcoind/log/run && \
+    echo "s6-setuidgid nobody" >> /etc/services.d/meteorcoind/log/run && \
+    echo "s6-log -bp -- n20 s1000000 /var/log/meteorcoind" >> /etc/services.d/meteorcoind/log/run && \
+    chmod +x /etc/services.d/meteorcoind/log/run && \
+    echo "/var/lib/meteorcoind true meteorcoind 0644 0755" > /etc/fix-attrs.d/meteorcoind-home && \
+    echo "/home/meteorcoin true meteorcoin 0644 0755" > /etc/fix-attrs.d/meteorcoin-home && \
+    echo "/var/log/meteorcoind true nobody 0644 0755" > /etc/fix-attrs.d/meteorcoind-logs
 
-VOLUME ["/var/lib/turtlecoind", "/home/turtlecoin","/var/log/turtlecoind"]
+VOLUME ["/var/lib/meteorcoind", "/home/meteorcoin","/var/log/meteorcoind"]
 
 ENTRYPOINT ["/init"]
-CMD ["/usr/bin/execlineb", "-P", "-c", "emptyenv cd /home/turtlecoin export HOME /home/turtlecoin s6-setuidgid turtlecoin /bin/bash"]
+CMD ["/usr/bin/execlineb", "-P", "-c", "emptyenv cd /home/meteorcoin export HOME /home/meteorcoin s6-setuidgid meteorcoin /bin/bash"]

@@ -1,4 +1,4 @@
-# setup - pull a copy of turtlecoin-development 
+# setup - pull a copy of meteorcoin-development
 # and put it inside a timestamped folder.
 # rock made this
 #!/usr/bin/env bash
@@ -10,7 +10,7 @@ sudo apt-get install -y build-essential python-dev gcc g++ git cmake libboost-al
 
 # This is the folder where your source code snapshots will go
 # when you are done building.
-sourcefolder=~/Source/turtle-dev-build-$(date '+%Y-%m-%d-%H-%M')
+sourcefolder=~/Source/meteor-dev-build-$(date '+%Y-%m-%d-%H-%M')
 
 # Clear the workspace
 clear
@@ -32,7 +32,7 @@ echo -e "\n\n\n== CLONING MeteorCoin in $sourcefolder"
 # master branch instead, and it will get the source from the last
 # time that we merged development to master, which normally only
 # happens when we create a version release.
-git clone -b development https://github.com/turtlecoin/turtlecoin $sourcefolder
+git clone -b development https://github.com/meteor-network/meteorcoin $sourcefolder
 cd $sourcefolder
 ls -al
 
@@ -56,8 +56,8 @@ ls -al
 # distribution. We should also include the LICENSE file in this 
 # zip file just in case.
 echo -e "\n\n\n== COMPRESSING BINARIES"
-wget https://raw.githubusercontent.com/turtlecoin/turtlecoin/development/LICENSE
-zip turtlecoin-dev-bin-$(date +%F)-linux.zip miner LICENSE zedwallet MeteorCoind turtle-service
+wget https://raw.githubusercontent.com/meteor-network/meteorcoin/development/LICENSE
+zip meteorcoin-dev-bin-$(date +%F)-linux.zip miner LICENSE zedwallet MeteorCoind meteor-service
 
 # Create directories to keep always-up-to-date binaries for 
 # TRTL Network files. Ideally, your bashrc has aliases to run
@@ -74,11 +74,11 @@ cd ~/Binaries
 rm ~/.Crypto/MeteorCoin/miner
 rm ~/.Crypto/MeteorCoin/zedwallet
 rm ~/.Crypto/MeteorCoin/MeteorCoind
-rm ~/.Crypto/MeteorCoin/turtle-service
+rm ~/.Crypto/MeteorCoin/meteor-service
 cp miner ~/.Crypto/MeteorCoin/miner
 cp zedwallet ~/.Crypto/MeteorCoin/zedwallet
 cp MeteorCoind ~/.Crypto/MeteorCoin/MeteorCoind
-cp turtle-service ~/.Crypto/MeteorCoin/turtle-service
+cp meteor-service ~/.Crypto/MeteorCoin/meteor-service
 
 
 

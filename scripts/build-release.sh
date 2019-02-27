@@ -115,11 +115,11 @@ then
 fi
 
 # -- Config
-GITHUB_REPO="https://github.com/turtlecoin/turtlecoin.git"
-CLONE_DIR="$BUILD_DIRECTORY/turtlecoin-buildall"
-TARGET_DIR="$BUILD_DIRECTORY/turtlecoin-releases"
-DYNAMIC_RELEASE="turtlecoin-${TAG_VERSION}-linux-CLI"
-STATIC_RELEASE="turtlecoin-${TAG_VERSION}-linux-staticboost-CLI"
+GITHUB_REPO="https://github.com/meteor-network/meteorcoin.git"
+CLONE_DIR="$BUILD_DIRECTORY/meteorcoin-buildall"
+TARGET_DIR="$BUILD_DIRECTORY/meteorcoin-releases"
+DYNAMIC_RELEASE="meteorcoin-${TAG_VERSION}-linux-CLI"
+STATIC_RELEASE="meteorcoin-${TAG_VERSION}-linux-staticboost-CLI"
 
 checkout_tag
 build_static_linked_version
