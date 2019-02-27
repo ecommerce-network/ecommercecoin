@@ -1,11 +1,10 @@
 // Copyright (c) 2018, The TurtleCoin Developers
-// Copyright (c) 2019, The MeteorCoin Developers
 // 
 // Please see the included LICENSE file for more information.
 
 #include <string>
 
-constexpr std::string_view canary = "MeteorCoin";
+constexpr std::string_view canary = "TurtleCoin";
 
 constexpr std::string_view canaryObfusticated = "\u0054\u0075\u0072\u0074\u006c\u0065\u0043\u006f\u0069\u006e";
 
