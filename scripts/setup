@@ -1,4 +1,4 @@
-# setup - pull a copy of meteorcoin-development
+# setup - pull a copy of ecommercecoin-development
 # and put it inside a timestamped folder.
 # rock made this
 #!/usr/bin/env bash
@@ -10,7 +10,7 @@ sudo apt-get install -y build-essential python-dev gcc g++ git cmake libboost-al
 
 # This is the folder where your source code snapshots will go
 # when you are done building.
-sourcefolder=~/Source/meteor-dev-build-$(date '+%Y-%m-%d-%H-%M')
+sourcefolder=~/Source/ecommerce-dev-build-$(date '+%Y-%m-%d-%H-%M')
 
 # Clear the workspace
 clear
@@ -23,8 +23,8 @@ cd ~/Source/
 # What's in the Source folder? Let's see.
 ls -al
 
-# Clone a copy of the MeteorCoin source code
-echo -e "\n\n\n== CLONING MeteorCoin in $sourcefolder"
+# Clone a copy of the EcommerceCoin source code
+echo -e "\n\n\n== CLONING EcommerceCoin in $sourcefolder"
 
 # By default we always push to the development branch, so if you 
 # want a nightly build, this is your best option. However, if you
@@ -32,7 +32,7 @@ echo -e "\n\n\n== CLONING MeteorCoin in $sourcefolder"
 # master branch instead, and it will get the source from the last
 # time that we merged development to master, which normally only
 # happens when we create a version release.
-git clone -b development https://github.com/meteor-network/meteorcoin $sourcefolder
+git clone -b development https://github.com/ecommerce-network/ecommercecoin $sourcefolder
 cd $sourcefolder
 ls -al
 
@@ -47,7 +47,7 @@ ls -al
 # to use all of your cores to compile this, or if you get errors 
 # about not enough ram/swap, you can remove the -j`nproc` from 
 # the make command.
-echo -e "\n\n\n== BUILDING MeteorCoin"
+echo -e "\n\n\n== BUILDING EcommerceCoin"
 cmake .. && make
 cd src
 ls -al
@@ -56,13 +56,13 @@ ls -al
 # distribution. We should also include the LICENSE file in this 
 # zip file just in case.
 echo -e "\n\n\n== COMPRESSING BINARIES"
-wget https://raw.githubusercontent.com/meteor-network/meteorcoin/development/LICENSE
-zip meteorcoin-dev-bin-$(date +%F)-linux.zip miner LICENSE zedwallet MeteorCoind meteor-service
+wget https://raw.githubusercontent.com/ecommerce-network/ecommercecoin/development/LICENSE
+zip ecommercecoin-dev-bin-$(date +%F)-linux.zip miner LICENSE zedwallet EcommerceCoind ecommerce-service
 
 # Create directories to keep always-up-to-date binaries for 
 # TRTL Network files. Ideally, your bashrc has aliases to run
 # from this folder, or you can add it to your $PATH.
-mkdir -p ~/.Crypto/{Athena,MeteorCoin,Karai}
+mkdir -p ~/.Crypto/{Athena,EcommerceCoin,Karai}
 mkdir ~/Binaries
 
 # Move the zip we created to the Binaries snapshot folder.
@@ -71,14 +71,14 @@ cd ~/Binaries
 
 # Copy the binaries to the folder we just created for them.
 # Remove the files that are already there just in case.
-rm ~/.Crypto/MeteorCoin/miner
-rm ~/.Crypto/MeteorCoin/zedwallet
-rm ~/.Crypto/MeteorCoin/MeteorCoind
-rm ~/.Crypto/MeteorCoin/meteor-service
-cp miner ~/.Crypto/MeteorCoin/miner
-cp zedwallet ~/.Crypto/MeteorCoin/zedwallet
-cp MeteorCoind ~/.Crypto/MeteorCoin/MeteorCoind
-cp meteor-service ~/.Crypto/MeteorCoin/meteor-service
+rm ~/.Crypto/EcommerceCoin/miner
+rm ~/.Crypto/EcommerceCoin/zedwallet
+rm ~/.Crypto/EcommerceCoin/EcommerceCoind
+rm ~/.Crypto/EcommerceCoin/ecommerce-service
+cp miner ~/.Crypto/EcommerceCoin/miner
+cp zedwallet ~/.Crypto/EcommerceCoin/zedwallet
+cp EcommerceCoind ~/.Crypto/EcommerceCoin/EcommerceCoind
+cp ecommerce-service ~/.Crypto/EcommerceCoin/ecommerce-service
 
 
 

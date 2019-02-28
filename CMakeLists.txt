@@ -7,7 +7,7 @@ if(CCACHE_PROGRAM)
   set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
 endif()
 
-project(MeteorCoin)
+project(EcommerceCoin)
 
 # Required for finding Threads on ARM
 enable_language(C)

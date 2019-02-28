@@ -1,4 +1,4 @@
-// Copyright (c) 2018, The MeteorCoin Developers
+// Copyright (c) 2018, The EcommerceCoin Developers
 // 
 // Please see the included LICENSE file for more information.
 
@@ -55,7 +55,7 @@ int main(int argc, char **argv)
     System::Dispatcher localDispatcher;
     System::Dispatcher *dispatcher = &localDispatcher;
 
-    /* Our connection to meteorcoind */
+    /* Our connection to ecommercecoind */
     std::unique_ptr<CryptoNote::INode> node(
         new CryptoNote::NodeRpcProxy(config.host, config.port, 10, logManager)
     );

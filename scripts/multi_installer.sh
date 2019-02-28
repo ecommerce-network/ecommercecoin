@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 # Meteorcoin Multi-installer
-# a one line clone-and-compile for meteorcoin:
+# a one line clone-and-compile for ecommercecoin:
 #
-#     ` $ curl -sL "https://raw.githubusercontent.com/meteor-network/meteorcoin/master/scripts/multi_installer.sh" | bash
+#     ` $ curl -sL "https://raw.githubusercontent.com/ecommerce-network/ecommercecoin/master/scripts/multi_installer.sh" | bash
 #
 # Supports Ubuntu 16.04 LTS, OSX 10.10+
 # Supports building project from current directory (automatic detection)
@@ -41,26 +41,26 @@ _set_wd() {
         _note "Building project from current working directory ($PWD)"
     else
         _note "Cloning project with git..."
-        if [ -d "$PWD"/meteorcoin ]; then
-            read -r -p "${1:-meteorcoin directory already exists. Overwrite? [y/N]} " response
+        if [ -d "$PWD"/ecommercecoin ]; then
+            read -r -p "${1:-ecommercecoin directory already exists. Overwrite? [y/N]} " response
             case "$response" in
                 [yY][eE][sS|[yY])
-                    _colorize red "Overwriting old meteorcoin directory" && echo
-                    rm -rf "$PWD"/meteorcoin
+                    _colorize red "Overwriting old ecommercecoin directory" && echo
+                    rm -rf "$PWD"/ecommercecoin
                     ;;
                 *)
-                    _fail "meteorcoin directory already exists. Aborting..."
+                    _fail "ecommercecoin directory already exists. Aborting..."
                     ;;
             esac
         fi
-        mkdir meteorcoin
-        git clone -b master -q https://github.com/meteor-network/meteorcoin meteorcoin   >>build.log 2>&1 || _fail "Unable to clone git repository. Please see build.log for more information"
-        cd meteorcoin
+        mkdir ecommercecoin
+        git clone -b master -q https://github.com/ecommerce-network/ecommercecoin ecommercecoin   >>build.log 2>&1 || _fail "Unable to clone git repository. Please see build.log for more information"
+        cd ecommercecoin
     fi
 }
 
-_build_meteorcoin() {
-    _note "Building meteorcoin from source (this might take a while)..."
+_build_ecommercecoin() {
+    _note "Building ecommercecoin from source (this might take a while)..."
     if [ -d build ]; then
         _colorize red "Overwriting old build directory" && echo
         rm -rf build
@@ -109,7 +109,7 @@ _configure_linux() {
     elif [ "$(awk -F= '/^NAME/{print $2}' /etc/os-release)" = "\"Debian GNU/Linux\"" ]; then
         _configure_debian
     else
-        _fail "Your OS version isn't supported by this installer. Please consider adding support for your OS to the project ('https://github.com/meteor-network')"
+        _fail "Your OS version isn't supported by this installer. Please consider adding support for your OS to the project ('https://github.com/ecommerce-network')"
     fi
 }
 
@@ -138,7 +138,7 @@ _configure_os() {
             _configure_osx
             ;;
         *)
-            _fail "This installer only runs on OSX 10.10+ and Ubuntu 16.04+. Please consider adding support for your OS to the project ('https://github.com/meteor-network')"
+            _fail "This installer only runs on OSX 10.10+ and Ubuntu 16.04+. Please consider adding support for your OS to the project ('https://github.com/ecommerce-network')"
             ;;
     esac
     _note "Operating system configuration completed. You're halfway there!"
@@ -150,7 +150,7 @@ _colorize green " _______         _   _       _____      _       \n|__   __|    
 _configure_os
 
 _set_wd
-_build_meteorcoin
+_build_ecommercecoin
 
 _note "Installation complete!"
-_note "Look in 'meteorcoin/build/src/' for the executible binaries. See 'https://github.com/meteor-network/meteorcoin' for more project support. Cowabunga!"
+_note "Look in 'ecommercecoin/build/src/' for the executible binaries. See 'https://github.com/ecommerce-network/ecommercecoin' for more project support. Cowabunga!"

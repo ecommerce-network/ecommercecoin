@@ -5,7 +5,7 @@ about: The purpose of this template is to provide a reproducible testing process
 
 ---
 
-# MeteorCoin <!-- Insert semver # including build number here --> Release Candidate Test Log
+# EcommerceCoin <!-- Insert semver # including build number here --> Release Candidate Test Log
 
 Build from: <!-- link to release candidate branch -->
 
@@ -20,7 +20,7 @@ Binaries for Testing:
 - [ ] `Version.h.in` updated to correct semver value
 - [ ] Release Notes Prepared (<!-- link to proposed copy of release notes -->)
 
-### MeteorCoind Tests
+### EcommerceCoind Tests
 - Daemon connects to local DB
   - [ ] Windows
   - [ ] Linux

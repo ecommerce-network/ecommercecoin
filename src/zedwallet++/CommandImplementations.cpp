@@ -85,7 +85,7 @@ void balance(const std::shared_ptr<WalletBackend> walletBackend)
 
     /* We can make a better approximation of the view wallet balance if we
        ignore fusion transactions.
-       See https://github.com/meteor-network/meteorcoin/issues/531 */
+       See https://github.com/ecommerce-network/ecommercecoin/issues/531 */
     if (walletBackend->isViewWallet())
     {
         unlockedBalance = 0;

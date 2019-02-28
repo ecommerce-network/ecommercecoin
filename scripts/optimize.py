@@ -1,7 +1,7 @@
-# USAGE: Start meteor-service as you usually would
+# USAGE: Start ecommerce-service as you usually would
 # then run `python optimize.py --address $ADDRESS --port $PORT --password $RPCPASS`
 # replacing $ADDRESS, $PORT AND $RPCPASS with your values
-from meteorcoin import Walletd as Wallet
+from ecommercecoin import Walletd as Wallet
 import time
 import argparse
 parser = argparse.ArgumentParser()

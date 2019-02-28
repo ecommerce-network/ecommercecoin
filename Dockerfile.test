@@ -4,9 +4,9 @@
 # Useless for mainnet, but used to setup a testnet with checkpoints, and not have to spend days mining to get to the next block!
 #
 # daemon runs in the background
-# run something like tail /var/log/meteorcoind/current to see the status
+# run something like tail /var/log/ecommercecoind/current to see the status
 # be sure to run with volumes, ie:
-# docker run -v $(pwd)/meteorcoind:/var/lib/meteorcoind -v $(pwd)/wallet:/home/meteorcoin --rm -ti meteorcoin:0.2.2
+# docker run -v $(pwd)/ecommercecoind:/var/lib/ecommercecoind -v $(pwd)/wallet:/home/ecommercecoin --rm -ti ecommercecoin:0.2.2
 ARG base_image_version=0.10.0
 FROM phusion/baseimage:$base_image_version
 
@@ -17,7 +17,7 @@ ADD https://github.com/just-containers/socklog-overlay/releases/download/v2.1.0-
 RUN tar xzf /tmp/socklog-overlay-amd64.tar.gz -C /
 
 # Get the latest checkpoints (we don't care about being _100%_ up-to-date, but we need to be past block 350K for the algo change to CN_lite_v1)
-ADD https://raw.githubusercontent.com/meteorcoin/checkpoints/master/checkpoints.csv /tmp/
+ADD https://raw.githubusercontent.com/ecommercecoin/checkpoints/master/checkpoints.csv /tmp/
 
 # In a multi-node testnet, we'll want to have the slave nodes "wait" for the master node to wake up, so let's get ready
 ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh /tmp/
@@ -36,8 +36,8 @@ RUN apt-get update && \
       g++-4.9 \
       git cmake \
       libboost1.58-all-dev && \
-    git clone https://github.com/meteor-network/meteorcoin.git /src/meteorcoin && \
-    cd /src/meteorcoin && \
+    git clone https://github.com/ecommerce-network/ecommercecoin.git /src/ecommercecoin && \
+    cd /src/ecommercecoin && \
     git checkout $METEORCOIN_BRANCH && \
     sed -i '/std::vector<uint64_t> timestamps_o(timestamps);/i \\/*\n   Lower difficulty to static 500 for testnet\n   The rest of this function is ignored\n*\/\nreturn 500;\n\n' src/CryptoNoteCore/Currency.cpp && \
     sed -i -e 's/"104.236.227.176:11897",/"172.16.76.11:11897",/g' src/CryptoNoteConfig.h && \
@@ -49,23 +49,23 @@ RUN apt-get update && \
     sed -i -e 's/"145.239.88.119:11999", \/\/cision/"10.0.76.11:11897",/g' src/CryptoNoteConfig.h && \
     sed -i -e 's/"142.44.242.106:11897", \/\/tom/"10.0.76.12:11897",/g' src/CryptoNoteConfig.h && \
     sed -i -e 's/"165.227.252.132:11897" \/\/iburnmycd/"10.0.76.13:11897",/g' src/CryptoNoteConfig.h && \
-    sed -i -e 's/MeteorCoin/TortleCoin/' src/CryptoNoteConfig.h && \
+    sed -i -e 's/EcommerceCoin/TortleCoin/' src/CryptoNoteConfig.h && \
     sed -i -e 's/0xcf, 0x52, 0x57/0x52, 0xcf, 0x57/' src/P2p/P2pNetworks.h && \
     mkdir build && \
     cd build && \
     cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++11" .. && \
     make -j$(nproc) && \
     mkdir -p /usr/local/bin && \
-    cp src/MeteorCoind /usr/local/bin/MeteorCoind && \
+    cp src/EcommerceCoind /usr/local/bin/EcommerceCoind && \
     cp src/walletd /usr/local/bin/walletd && \
     cp src/zedwallet /usr/local/bin/zedwallet && \
     cp src/miner /usr/local/bin/miner && \
-    strip /usr/local/bin/MeteorCoind && \
+    strip /usr/local/bin/EcommerceCoind && \
     strip /usr/local/bin/walletd && \
     strip /usr/local/bin/zedwallet && \
     strip /usr/local/bin/miner && \
     cd / && \
-    rm -rf /src/meteorcoin && \
+    rm -rf /src/ecommercecoin && \
     apt-get remove -y build-essential python-dev gcc-4.9 g++-4.9 git cmake libboost1.58-all-dev && \
     apt-get autoremove -y && \
     apt-get install -y  \
@@ -79,29 +79,29 @@ RUN apt-get update && \
       libboost-program-options1.58.0 \
       libicu55
 
-# setup the meteorcoind service
-RUN useradd -r -s /usr/sbin/nologin -m -d /var/lib/meteorcoind meteorcoind && \
-    useradd -s /bin/bash -m -d /home/meteorcoin meteorcoin && \
-    mkdir -p /etc/services.d/meteorcoind/log && \
-    mkdir -p /var/log/meteorcoind && \
-    echo "#!/usr/bin/execlineb" > /etc/services.d/meteorcoind/run && \
-    echo "fdmove -c 2 1" >> /etc/services.d/meteorcoind/run && \
-    echo "cd /var/lib/meteorcoind" >> /etc/services.d/meteorcoind/run && \
-    echo "export HOME /var/lib/meteorcoind" >> /etc/services.d/meteorcoind/run && \
-    echo "s6-setuidgid meteorcoind /usr/local/bin/MeteorCoind --log-level=2" >> /etc/services.d/meteorcoind/run && \
-    chmod +x /etc/services.d/meteorcoind/run && \
+# setup the ecommercecoind service
+RUN useradd -r -s /usr/sbin/nologin -m -d /var/lib/ecommercecoind ecommercecoind && \
+    useradd -s /bin/bash -m -d /home/ecommercecoin ecommercecoin && \
+    mkdir -p /etc/services.d/ecommercecoind/log && \
+    mkdir -p /var/log/ecommercecoind && \
+    echo "#!/usr/bin/execlineb" > /etc/services.d/ecommercecoind/run && \
+    echo "fdmove -c 2 1" >> /etc/services.d/ecommercecoind/run && \
+    echo "cd /var/lib/ecommercecoind" >> /etc/services.d/ecommercecoind/run && \
+    echo "export HOME /var/lib/ecommercecoind" >> /etc/services.d/ecommercecoind/run && \
+    echo "s6-setuidgid ecommercecoind /usr/local/bin/EcommerceCoind --log-level=2" >> /etc/services.d/ecommercecoind/run && \
+    chmod +x /etc/services.d/ecommercecoind/run && \
     chmod +x /tmp/wait-for-it.sh && \
-    chown nobody:nogroup /var/log/meteorcoind && \
-    echo "#!/usr/bin/execlineb" > /etc/services.d/meteorcoind/log/run && \
-    echo "s6-setuidgid nobody" >> /etc/services.d/meteorcoind/log/run && \
-    echo "s6-log -bp -- n20 s1000000 /var/log/meteorcoind" >> /etc/services.d/meteorcoind/log/run && \
-    chmod +x /etc/services.d/meteorcoind/log/run && \
-    echo "/var/lib/meteorcoind true meteorcoind 0644 0755" > /etc/fix-attrs.d/meteorcoind-home && \
-    echo "/home/meteorcoin true meteorcoin 0644 0755" > /etc/fix-attrs.d/meteorcoin-home && \
-    echo "/tmp/checkpoints.csv true meteorcoin 0644 0755" > /etc/fix-attrs.d/meteorcoin-checkpoints && \
-    echo "/var/log/meteorcoind true nobody 0644 0755" > /etc/fix-attrs.d/meteorcoind-logs
+    chown nobody:nogroup /var/log/ecommercecoind && \
+    echo "#!/usr/bin/execlineb" > /etc/services.d/ecommercecoind/log/run && \
+    echo "s6-setuidgid nobody" >> /etc/services.d/ecommercecoind/log/run && \
+    echo "s6-log -bp -- n20 s1000000 /var/log/ecommercecoind" >> /etc/services.d/ecommercecoind/log/run && \
+    chmod +x /etc/services.d/ecommercecoind/log/run && \
+    echo "/var/lib/ecommercecoind true ecommercecoind 0644 0755" > /etc/fix-attrs.d/ecommercecoind-home && \
+    echo "/home/ecommercecoin true ecommercecoin 0644 0755" > /etc/fix-attrs.d/ecommercecoin-home && \
+    echo "/tmp/checkpoints.csv true ecommercecoin 0644 0755" > /etc/fix-attrs.d/ecommercecoin-checkpoints && \
+    echo "/var/log/ecommercecoind true nobody 0644 0755" > /etc/fix-attrs.d/ecommercecoind-logs
 
-VOLUME ["/var/lib/meteorcoind", "/home/meteorcoin","/var/log/meteorcoind"]
+VOLUME ["/var/lib/ecommercecoind", "/home/ecommercecoin","/var/log/ecommercecoind"]
 
 ENTRYPOINT ["/init"]
-CMD ["/usr/bin/execlineb", "-P", "-c", "emptyenv cd /home/meteorcoin export HOME /home/meteorcoin s6-setuidgid meteorcoin tail -f /var/log/meteorcoind/current"]
+CMD ["/usr/bin/execlineb", "-P", "-c", "emptyenv cd /home/ecommercecoin export HOME /home/ecommercecoin s6-setuidgid ecommercecoin tail -f /var/log/ecommercecoind/current"]

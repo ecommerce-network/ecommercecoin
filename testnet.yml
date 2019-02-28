@@ -2,24 +2,24 @@ version: '3'
 
 services:
   node1:
-    image: blastbeng/meteorcoin
-    container_name: meteortest-node1
+    image: blastbeng/ecommercecoin
+    container_name: ecommercetest-node1
     volumes:
-      - ../meteorcoind:/var/lib/meteorcoind/
+      - ../ecommercecoind:/var/lib/ecommercecoind/
     networks:
       testnet:
         ipv4_address: 172.16.76.11
   
 #  node2:
-#    image: blastbeng/meteorcoin
-#    container_name: meteortest-node2
+#    image: blastbeng/ecommercecoin
+#    container_name: ecommercetest-node2
 #    networks:
 #      testnet:
 #        ipv4_address: 172.16.76.12
   
 #  node3:
-#    image: blastbeng/meteorcoin
-#    container_name: meteortest-node3
+#    image: blastbeng/ecommercecoin
+#    container_name: ecommercetest-node3
 #    networks:
 #      testnet:
 #        ipv4_address: 172.16.76.13

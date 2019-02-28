@@ -1,9 +1,9 @@
 #define STR_HELPER(x) #x
 #define STR(x) STR_HELPER(x)
 
-#define PROJECT_NAME "MeteorCoin"
-#define PROJECT_SITE "http://www.meteorcoin.lol"
-#define PROJECT_COPYRIGHT "Copyright 2018-2019, The MeteorCoin Developers"
+#define PROJECT_NAME "EcommerceCoin"
+#define PROJECT_SITE "http://www.ecommercecoin.lol"
+#define PROJECT_COPYRIGHT "Copyright 2018-2019, The EcommerceCoin Developers"
 #define APP_VER_MAJOR 0
 #define APP_VER_MINOR 13
 #define APP_VER_REV 1
