@@ -17,7 +17,7 @@
 namespace CryptoNote {
 namespace parameters {
 
-const uint64_t DIFFICULTY_TARGET                             = 600; // seconds
+const uint64_t DIFFICULTY_TARGET                             = 30; // seconds
 
 const uint32_t CRYPTONOTE_MAX_BLOCK_NUMBER                   = 500000000;
 const size_t   CRYPTONOTE_MAX_BLOCK_BLOB_SIZE                = 500000000;
@@ -33,22 +33,22 @@ const size_t   BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW             = 60;
 const size_t   BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW_V3          = 11;
 
 // MONEY_SUPPLY - total number coins to be generated
-const uint64_t MONEY_SUPPLY                                  = UINT64_C(20000000000);
-const uint32_t ZAWY_DIFFICULTY_BLOCK_INDEX                   = 448000;
+const uint64_t MONEY_SUPPLY                                  = UINT64_C(100000000000000);
+const uint32_t ZAWY_DIFFICULTY_BLOCK_INDEX                   = 187000;
 const size_t   ZAWY_DIFFICULTY_V2                            = 0;
 const uint8_t  ZAWY_DIFFICULTY_DIFFICULTY_BLOCK_VERSION      = 3;
 
-const uint64_t LWMA_2_DIFFICULTY_BLOCK_INDEX                 = 1344000;
-const uint64_t LWMA_2_DIFFICULTY_BLOCK_INDEX_V2              = 2116500;
-const uint64_t LWMA_2_DIFFICULTY_BLOCK_INDEX_V3              = 3000000;
+const uint64_t LWMA_2_DIFFICULTY_BLOCK_INDEX                 = 620000;
+const uint64_t LWMA_2_DIFFICULTY_BLOCK_INDEX_V2              = 700000;
+const uint64_t LWMA_2_DIFFICULTY_BLOCK_INDEX_V3              = 800000;
 
-const uint64_t LWMA_3_DIFFICULTY_BLOCK_INDEX                 = 4500000;
+const uint64_t LWMA_3_DIFFICULTY_BLOCK_INDEX                 = 2000000;
 
-const unsigned EMISSION_SPEED_FACTOR                         = 35;
+const unsigned EMISSION_SPEED_FACTOR                         = 25;
 static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
 /* Premine amount */
-const uint64_t GENESIS_BLOCK_REWARD                          = UINT64_C(1000);
+const uint64_t GENESIS_BLOCK_REWARD                          = UINT64_C(0);
 
 /* How to generate a premine:
 
@@ -140,6 +140,10 @@ const uint64_t MAX_EXTRA_SIZE                                = 140000;
 const uint64_t MAX_EXTRA_SIZE_V2                             = 1024;
 const uint64_t MAX_EXTRA_SIZE_V2_HEIGHT                      = 1300000;
 
+/* For new projects forked from this code base, this value should be
+   changed to 0 to prevent a possible transaction bloat exploit */
+const uint64_t TRANSACTION_SIGNATURE_COUNT_VALIDATION_HEIGHT = 0;
+
 const uint64_t CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS     = 1;
 const uint64_t CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_SECONDS    = DIFFICULTY_TARGET * CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS;
 
@@ -182,7 +186,7 @@ const uint64_t FORK_HEIGHTS[] =
 };
 
 /* MAKE SURE TO UPDATE THIS VALUE WITH EVERY MAJOR RELEASE BEFORE A FORK */
-const uint64_t SOFTWARE_SUPPORTED_FORK_INDEX                 = 8;
+const uint64_t SOFTWARE_SUPPORTED_FORK_INDEX                 = 9;
 
 const uint64_t FORK_HEIGHTS_SIZE = sizeof(FORK_HEIGHTS) / sizeof(*FORK_HEIGHTS);
 
