@@ -23,7 +23,9 @@ const uint32_t CRYPTONOTE_MAX_BLOCK_NUMBER                   = 500000000;
 const size_t   CRYPTONOTE_MAX_BLOCK_BLOB_SIZE                = 500000000;
 const size_t   CRYPTONOTE_MAX_TX_SIZE                        = 1000000000;
 //const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX       = 0x3aee10;
-const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX       = 3862032;
+//const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX       = 3862032;
+const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX       = 0x2c5e;
+
 const uint32_t CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW          = 40;
 const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT            = 60 * 60 * 2;
 const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V3         = 3 * DIFFICULTY_TARGET;
@@ -272,10 +274,10 @@ const static   boost::uuids::uuid CRYPTONOTE_NETWORK         =
 };
 
 const char* const SEED_NODES[] = {
-    "127.0.0.1:11897"
-//  "206.189.142.142:11897",//rock
-//  "145.239.88.119:11999", //cision
-//  "142.44.242.106:11897", //tom
-//  "165.227.252.132:11897" //iburnmycd
+  "2.235.170.165:11897", //temp
+  "18.231.41.205:11897", //sa-east-1
+  "52.53.244.189:11897", //us-west-1
+  "52.59.16.168:11897", //eu-central-1
+  "54.199.206.130:11897" //ap-northeast-1
 };
 } // CryptoNote
