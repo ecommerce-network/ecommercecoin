@@ -264,6 +264,7 @@ bool CryptoNoteProtocolHandler::process_payload_sync_data(const CORE_SYNC_DATA& 
 
     /* Find the difference between the remote and the local height */
     int64_t diff = static_cast<int64_t>(remoteHeight) - static_cast<int64_t>(currentHeight);
+    if (diff == 0) { diff = 1; }
 
     /* Find out how many days behind/ahead we are from the remote height */
     uint64_t days = std::abs(diff) / (24 * 60 * 60 / m_currency.difficultyTarget());
