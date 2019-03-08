@@ -50,7 +50,7 @@ const unsigned EMISSION_SPEED_FACTOR                         = 25;
 static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
 /* Premine amount */
-const uint64_t GENESIS_BLOCK_REWARD                          = UINT64_C(10000000000);
+const uint64_t GENESIS_BLOCK_REWARD                          = UINT64_C(100000000000);
 
 /* How to generate a premine:
 
