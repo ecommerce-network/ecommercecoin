@@ -50,7 +50,7 @@ const unsigned EMISSION_SPEED_FACTOR                         = 25;
 static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
 /* Premine amount */
-const uint64_t GENESIS_BLOCK_REWARD                          = UINT64_C(100000000000);
+const uint64_t GENESIS_BLOCK_REWARD                          = UINT64_C(2500000000000);
 
 /* How to generate a premine:
 
@@ -72,7 +72,8 @@ TurtleCoind --print-genesis-tx --genesis-block-reward-address TRTLv2Fyavy8CXG8BP
 * You should see your premine appear in the previously generated wallet.
 
 */
-const char      GENESIS_COINBASE_TX_HEX[] = "012801ff00016402f5b3d4229b602463f56ff2c189aec3022af0b267f3e1c8f2df11160e89046d25210123f48cb2212aef6a8f5b40c145eb2e3bd7e0086af09964a21734f83dad35482d";
+
+const char GENESIS_COINBASE_TX_HEX[] = "012801ff000180d0f29ce14802e775336f19d2355256904cb8ee12ce9975503b62580c048851907218a92f937f210122cc6883c8752afd0e83bd53e054dacd2bd8423db1107ad149a13e25f162ba81";
 
 static_assert(sizeof(GENESIS_COINBASE_TX_HEX)/sizeof(*GENESIS_COINBASE_TX_HEX) != 1, "GENESIS_COINBASE_TX_HEX must not be empty.");
 
@@ -90,7 +91,7 @@ const size_t   CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE        = 600;
 
 const size_t   CRYPTONOTE_DISPLAY_DECIMAL_POINT              = 4;
 
-const uint64_t MINIMUM_FEE                                   = UINT64_C(1);
+const uint64_t MINIMUM_FEE                                   = UINT64_C(10000);
 
 /* This section defines our minimum and maximum mixin counts required for transactions */
 const uint64_t MINIMUM_MIXIN_V1                              = 0;
@@ -266,10 +267,8 @@ const static   boost::uuids::uuid CRYPTONOTE_NETWORK         =
 };
 
 const char* const SEED_NODES[] = {
-  "2.235.170.165:11897", //temp
-  //"18.231.41.205:11897", //sa-east-1
   "52.53.244.189:11897", //us-west-1
   "52.59.16.168:11897", //eu-central-1
-  //"54.199.206.130:11897" //ap-northeast-1
+  "35.154.151.130:11897" //ap-south-1
 };
 } // CryptoNote
