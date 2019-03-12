@@ -17,7 +17,7 @@
 namespace CryptoNote {
 namespace parameters {
 
-const uint64_t DIFFICULTY_TARGET                             = 300; // seconds
+const uint64_t DIFFICULTY_TARGET                             = 120; // seconds
 
 const uint32_t CRYPTONOTE_MAX_BLOCK_NUMBER                   = 500000000;
 const size_t   CRYPTONOTE_MAX_BLOCK_BLOB_SIZE                = 500000000;
@@ -267,8 +267,8 @@ const static   boost::uuids::uuid CRYPTONOTE_NETWORK         =
 };
 
 const char* const SEED_NODES[] = {
-  "52.53.244.189:11897", //us-west-1
-  "52.59.16.168:11897", //eu-central-1
+  "52.59.229.97:11897", //eu-central-1
+  "54.153.44.129:11897", //us-west-1
   "35.154.151.130:11897" //ap-south-1
 };
 } // CryptoNote
