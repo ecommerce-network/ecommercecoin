@@ -1,9 +1,6 @@
 #### Master Build Status
 [![Build Status](https://travis-ci.org/ecommercecoin/ecommercecoin.svg?branch=master)](https://travis-ci.org/ecommercecoin/ecommercecoin) [![Build status](https://ci.appveyor.com/api/projects/status/github/ecommercecoin/ecommercecoin?branch=master&svg=true)](https://ci.appveyor.com/project/RocksteadyTC/ecommercecoin)
 
-#### Development Build Status
-[![Build Status](https://travis-ci.org/ecommercecoin/ecommercecoin.svg?branch=development)](https://travis-ci.org/ecommercecoin/ecommercecoin) [![Build status](https://ci.appveyor.com/api/projects/status/github/ecommercecoin/ecommercecoin?branch=development&svg=true)](https://ci.appveyor.com/project/RocksteadyTC/ecommercecoin)
-
 ### Installing
 
 We offer binary images of the latest releases here: http://latest.ecommercecoin.lol
