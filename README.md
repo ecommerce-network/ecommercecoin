@@ -1,5 +1,5 @@
 #### Master Build Status
-[![Build Status](https://travis-ci.org/ecommercecoin/ecommercecoin.svg?branch=master)](https://travis-ci.org/ecommercecoin/ecommercecoin) [![Build status](https://ci.appveyor.com/api/projects/status/github/ecommercecoin/ecommercecoin?branch=master&svg=true)](https://ci.appveyor.com/project/RocksteadyTC/ecommercecoin)
+[![Build Status](https://travis-ci.org/ecommercecoin/ecommercecoin.svg?branch=master)](https://travis-ci.org/ecommercecoin/ecommercecoin)
 
 ### Installing
 
